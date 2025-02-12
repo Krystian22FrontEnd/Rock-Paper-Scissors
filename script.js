@@ -43,9 +43,9 @@ function getComputerChoice(max) {
     
    function playGame() {
     function playRound(humanChoice, computerChoice) {
+
         const playerPoints = document.querySelector(".playerPoints");
         const computerPoints = document.querySelector(".computerPoints");
-
 
         if(humanChoice === "rock" && computerChoice === "scissors") {
                return playerPoints.innerText = ++humanScore
@@ -84,7 +84,6 @@ function getComputerChoice(max) {
                 getWinner()
             })
         })
-
    }
 
    playGame()

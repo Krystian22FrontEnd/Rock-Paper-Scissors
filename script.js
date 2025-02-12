@@ -27,81 +27,66 @@ function getComputerChoice(max) {
     }
 }
 
+    function getWinner () {
 
-function getHumanChoice () {
-    
-   let choice = prompt("Choose").toLowerCase();
-        
-   if(choice !== "rock" && choice !== "paper" && choice !== "scissors") {
-    console.log("Please enter a valid name")
-   } else {
-    return choice
-   }
-    }
+        let winner = ""
 
-    function getResults () {
-        if(humanScore > computerScore){
-            return alert(`You are a winner! With ${humanScore} point/s!!!`)
-        } else if (computerScore > humanScore){
-            return alert(`Computer is a winner! With ${computerScore} point/s!!!`)
-        } else {
-            return alert (`We have a tie! With ${humanScore} point/s and ${computerScore} point/s on each side!!!`)
-        }
+        if(humanScore === 5){
+            let humanScore = "Player"
+            return alert(`The winner is ${winner += humanScore}!!!`)
+
+        } else if (computerScore === 5) {
+            let computerScore = "Computer"
+            return alert(`The winner is ${winner += computerScore}!!!`)
     }
+}
     
-function playGame () {
+   function playGame() {
     function playRound(humanChoice, computerChoice) {
+        const playerPoints = document.querySelector(".playerPoints");
+        const computerPoints = document.querySelector(".computerPoints");
+
 
         if(humanChoice === "rock" && computerChoice === "scissors") {
-               return (
-                    console.log("Congrats! You won!"),
-                    console.log("Your score:",  ++humanScore)
-               ) 
+               return playerPoints.innerText = ++humanScore
         
         } else if (humanChoice === "rock" && computerChoice === "rock") {
               return  console.log("Tie!")
         
         } else if (humanChoice === "rock" && computerChoice === "paper"){
-                return (
-                    console.log("You lose!"),
-                    console.log("Computer score:",  ++computerScore)
-                )
+            return computerPoints.innerText = ++computerScore
 
         } else if (humanChoice === "paper" && computerChoice === "rock"){
-                return (
-                    console.log("Congrats! You won!"),
-                    console.log("Your score:",  ++humanScore)
-                )
-            
+                return playerPoints.innerText = ++humanScore
+                
         } else if (humanChoice === "paper" && computerChoice === "paper") {
                 return console.log("Tie!")
 
         }  else if (humanChoice === "paper" && computerChoice === "scissors"){
-                return (
-                    console.log("You lose!"),
-                    console.log("Computer score:",  ++computerScore))
+                return  computerPoints.innerText = ++computerScore
 
         } else if (humanChoice === "scissors" && computerChoice === "paper"){
-                return (
-                    console.log("Congrats! You won!"),
-                    console.log("Your score:",  ++humanScore))
+            return playerPoints.innerText = ++humanScore
         
         } else if (humanChoice === "scissors" && computerChoice === "scissors") {
                 return console.log("Tie!")
 
         }  else if (humanChoice === "scissors" && computerChoice === "rock"){
-                return (
-                    console.log("You lose!"),
-                    console.log("Computer score:",  ++computerScore)
-            )
+            return computerPoints.innerText = ++computerScore
 }
         }
+        const btn = document.querySelectorAll(".btn");
 
-        playRound(getHumanChoice(), getComputerChoice(3));
-        playRound(getHumanChoice(), getComputerChoice(3));
-        playRound(getHumanChoice(), getComputerChoice(3));
-        playRound(getHumanChoice(), getComputerChoice(3));
-        playRound(getHumanChoice(), getComputerChoice(3));
-        getResults();
-}
-playGame()
+        btn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const humanChoice = btn.innerText.toLowerCase()
+                playRound(humanChoice, getComputerChoice(3))
+                getWinner()
+            })
+        })
+
+   }
+
+   playGame()
+
+

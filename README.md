@@ -2,4 +2,4 @@
 
 ## Really simple and fun to play game.
 
-###  For now only avalaible to play in console.log!
+###  Avalaible to play but withiout any styling yet!
